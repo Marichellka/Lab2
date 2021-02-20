@@ -11,10 +11,11 @@ namespace Project
             List<string[]> info =new List<string[]>();
             string [] files = Directory.GetFiles(path);
 
-            foreach (var currentfFile in files)
+            foreach (var currentFile in files)
             {
-                using (var sr=new StreamReader(currentfFile, Encoding.Unicode))
+                using (var sr=new StreamReader(currentFile, Encoding.Default))
                 {
+                    sr.ReadLine();
                     while (!sr.EndOfStream)
                     {
                         info.Add(sr.ReadLine().Split(','));
