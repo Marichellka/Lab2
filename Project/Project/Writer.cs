@@ -1,4 +1,4 @@
-﻿namespace Writer
+﻿namespace Project
 {
     using System;
     using System.IO;
