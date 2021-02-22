@@ -9,11 +9,12 @@ namespace Project
         public static List<string[]> CsvReader(string path)
         {
             List<string[]> info =new List<string[]>();
-            string [] files = Directory.GetFiles(path);
+            DirectoryInfo directoryInfo=new DirectoryInfo(path);
+            FileInfo[] files = directoryInfo.GetFiles("*.csv");
 
             foreach (var currentFile in files)
             {
-                using (var sr=new StreamReader(currentFile, Encoding.Default))
+                using (var sr=new StreamReader(currentFile.FullName, Encoding.Default))
                 {
                     sr.ReadLine();
                     while (!sr.EndOfStream)
