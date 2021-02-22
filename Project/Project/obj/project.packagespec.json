@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\user\\Desktop\\Навчання\\ОП\\2 семестр\\Project\\Project\\Project.csproj",
+    "projectUniqueName": "C:\\Users\\user\\Desktop\\Навчання\\ОП\\2 семестр\\Lab2\\Project\\Project\\Project.csproj",
     "projectName": "Project",
-    "projectPath": "C:\\Users\\user\\Desktop\\Навчання\\ОП\\2 семестр\\Project\\Project\\Project.csproj",
-    "outputPath": "C:\\Users\\user\\Desktop\\Навчання\\ОП\\2 семестр\\Project\\Project\\obj\\",
+    "projectPath": "C:\\Users\\user\\Desktop\\Навчання\\ОП\\2 семестр\\Lab2\\Project\\Project\\Project.csproj",
+    "outputPath": "C:\\Users\\user\\Desktop\\Навчання\\ОП\\2 семестр\\Lab2\\Project\\Project\\obj\\",
     "projectStyle": "PackageReference",
     "originalTargetFrameworks": [
       "net472"
