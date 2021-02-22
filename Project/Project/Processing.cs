@@ -4,20 +4,21 @@ namespace Project
 {
     public class Processing
     {
-        public static Dictionary<string, int> SumOfVotes(List<string[]> info)
+        public static string[,] SumOfVotes(List<string[]> info)
         {
-            Dictionary<string, int> countries=new Dictionary<string, int>();
+            string[,] countries = new string[info.Count,2];
 
-            foreach (var country in info)
+            for (int i = 0; i < info.Count; i++)
             {
-                string name = country[0];
+                countries[i,0] = info[i][0];
                 int sum = 0;
-                
-                for (int i = 1; i < country.Length; i++) 
-                    sum += int.Parse(country[i]);
-                
-                countries.Add(name, sum);
+
+                for (int j = 1; j < info[i].Length; j++)
+                    sum += int.Parse(info[i][j]);
+
+                countries[i,1] = sum.ToString();
             }
+
             return countries;
         }
     }
