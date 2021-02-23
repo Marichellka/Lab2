@@ -40,13 +40,9 @@ namespace Project
                 {
                     if (Int32.Parse(countries[j][column]) < Int32.Parse(countries[j + 1][column]))
                     {
-                        var temp = String.Empty;
-                        for (int k = 0; k < countries.Count; k++)
-                        {
-                            temp = countries[j][k];
-                            countries[j][k] = countries[j + 1][k];
-                            countries[j + 1][k] = temp;
-                        }
+                        var temp = countries[j];
+                        countries[j] = countries[j + 1];
+                        countries[j + 1] = temp;
                     }
                 }
             }
@@ -67,8 +63,9 @@ namespace Project
                 {
                     mark -= 1;
                 }
+                Console.WriteLine(countries[i][0]+" "+countries[i][column]);
             }
-            
+            Console.WriteLine();
             return countries;
         }
     }
