@@ -19,7 +19,7 @@ namespace Project
             List<string[]> information = Reader.CsvReader(path);
             string[,] countries = Processing.SumOfVotes(information);
             countries = Processing.SortTheTop(countries);
-            Writer.CsvWriter(countries);
+            Writer.CsvWriter(countries, path);
         }
     }
 }
