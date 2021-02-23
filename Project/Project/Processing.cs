@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Project
@@ -41,13 +41,36 @@ namespace Project
                     }
                 }
             }
+            return top;
+        }
+        public static string[,] CovnvertToMarks(string[,] countries)
+        {
             var top = new string[10, 2];
+            int mark = 12;
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 2; j++)
                 {
-                    top[i, j] = countries[i, j];
+                    if (j == 1)
+                    {
+                        if (i == 0)
+                        {
+                            top[i, j] = Convert.ToString(mark);
+                            mark -= 2;
+                        }
+                        else if (i == 1)
+                        {
+                            top[i, j] = Convert.ToString(mark);
+                            mark -= 2;
+                        }
+                        else
+                        {
+                            top[i, j] = Convert.ToString(mark);
+                            mark -= 1;
+                        }
+                    }
                 }
+                top[i, 0] = countries[i, 0];
             }
             return top;
         }
