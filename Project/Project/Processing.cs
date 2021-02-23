@@ -5,6 +5,18 @@ namespace Project
 {
     public class Processing
     {
+        public static List<string[]> ProcessingData(List<string[]> countries)
+        {
+            for (int i = 1; i < countries[0].Length; i++)
+            {
+                countries=SortTheTop(countries, i);
+                countries=ConvertToMarks(countries, i);
+            }
+
+            countries=SumOfVotes(countries);
+            countries=SortTheTop(countries, 1);
+            return countries;
+        }
         public static List<string[]> SumOfVotes(List<string[]> countries)
         {
 
