@@ -16,9 +16,8 @@ namespace Project
                 path = Console.ReadLine();
             }
 
-            List<string[]> information = Reader.CsvReader(path);
-            string[,] countries = Processing.SumOfVotes(information);
-            countries = Processing.SortTheTop(countries);
+            List<string[]> countries = Reader.CsvReader(path);
+            countries = Processing.ProcessingData(countries);
             Writer.CsvWriter(countries, path);
         }
     }
