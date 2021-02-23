@@ -5,74 +5,59 @@ namespace Project
 {
     public class Processing
     {
-        public static string[,] SumOfVotes(List<string[]> info)
+        public static List<string[]> SumOfVotes(List<string[]> countries)
         {
-            string[,] countries = new string[info.Count,2];
 
-            for (int i = 0; i < info.Count; i++)
+            for (int i = 0; i < countries.Count; i++)
             {
-                countries[i,0] = info[i][0];
                 int sum = 0;
 
-                for (int j = 1; j < info[i].Length; j++)
-                    sum += int.Parse(info[i][j]);
+                for (int j = 1; j < countries[i].Length; j++)
+                    sum += int.Parse(countries[i][j]);
 
-                countries[i,1] = sum.ToString();
+                countries[i][1] = sum.ToString();
             }
-
+            
             return countries;
         }
-        public static string[,] SortTheTop(string[,] countries)
+        public static List<string[]> SortTheTop(List<string[]> countries, int column)
         {
-            var item = 1;
-            for (int i = 0; i < countries.GetLength(0); i++)
+            for (int i = 0; i < countries.Count; i++)
             {
-                for (int j = 0; j < countries.GetLength(0) - 1; j++)
+                for (int j = 0; j < countries.Count - 1; j++)
                 {
-                    if (Int32.Parse(countries[j, item]) < Int32.Parse(countries[j + 1, item]))
+                    if (Int32.Parse(countries[j][column]) < Int32.Parse(countries[j + 1][column]))
                     {
                         var temp = String.Empty;
-                        for (int k = 0; k < countries.GetLength(1); k++)
+                        for (int k = 0; k < countries.Count; k++)
                         {
-                            temp = countries[j, k];
-                            countries[j, k] = countries[j + 1, k];
-                            countries[j + 1, k] = temp;
+                            temp = countries[j][k];
+                            countries[j][k] = countries[j + 1][k];
+                            countries[j + 1][k] = temp;
                         }
                     }
                 }
             }
-            return top;
+            return countries;
         }
-        public static string[,] CovnvertToMarks(string[,] countries)
+        
+        public static List<string[]> ConvertToMarks(List<string[]> countries, int column)
         {
-            var top = new string[10, 2];
             int mark = 12;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < countries.Count; i++)
             {
-                for (int j = 0; j < 2; j++)
+                countries[i][column] = Convert.ToString(mark);
+                if (i <= 1)
                 {
-                    if (j == 1)
-                    {
-                        if (i == 0)
-                        {
-                            top[i, j] = Convert.ToString(mark);
-                            mark -= 2;
-                        }
-                        else if (i == 1)
-                        {
-                            top[i, j] = Convert.ToString(mark);
-                            mark -= 2;
-                        }
-                        else
-                        {
-                            top[i, j] = Convert.ToString(mark);
-                            mark -= 1;
-                        }
-                    }
+                    mark -= 2;
                 }
-                top[i, 0] = countries[i, 0];
+                else if (i < 10)
+                {
+                    mark -= 1;
+                }
             }
-            return top;
+            
+            return countries;
         }
     }
 }
