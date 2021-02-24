@@ -16,8 +16,11 @@ namespace Project
                 path = Console.ReadLine();
             }
 
+            Console.Write("Enter marks:");
+            string marks = Console.ReadLine();
+            
             List<string[]> countries = Reader.CsvReader(path);
-            countries = Processing.ProcessingData(countries);
+            countries = Processing.ProcessingData(countries, marks);
             Writer.CsvWriter(countries, path);
         }
     }
