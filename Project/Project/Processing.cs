@@ -10,7 +10,7 @@ namespace Project
             for (int i = 1; i < countries[0].Length; i++)
             {
                 countries = SortTheTop(countries, i);
-                countries = ConvertToMarks(countries, i);
+                countries = ConvertToMarks(countries, i, correction);
             }
 
             countries = SumOfVotes(countries);
@@ -53,6 +53,7 @@ namespace Project
         {
             if (String.IsNullOrEmpty(correction))
             {
+                int mark = 12;
                 for (int i = 0; i < countries.Count; i++)
                 {
                     countries[i][column] = Convert.ToString(mark);
@@ -72,13 +73,13 @@ namespace Project
                 var mark = String.Empty;
                 for (int i = 0; i < countries.Count; i++)
                 {
-                    if (i < correction.Length)
+                    if (i < marks.Length)
                     {
                         mark = marks[i];
                     }
                     else
                     {
-                        mark = 0;
+                        mark = "0";
                     }
                     countries[i][column] = Convert.ToString(mark);
                 }
