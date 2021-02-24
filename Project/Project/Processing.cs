@@ -5,16 +5,16 @@ namespace Project
 {
     public class Processing
     {
-        public static List<string[]> ProcessingData(List<string[]> countries)
+        public static List<string[]> ProcessingData(List<string[]> countries, string correction)
         {
             for (int i = 1; i < countries[0].Length; i++)
             {
-                countries=SortTheTop(countries, i);
-                countries=ConvertToMarks(countries, i);
+                countries = SortTheTop(countries, i);
+                countries = ConvertToMarks(countries, i);
             }
 
-            countries=SumOfVotes(countries);
-            countries=SortTheTop(countries, 1);
+            countries = SumOfVotes(countries);
+            countries = SortTheTop(countries, 1);
             return countries;
         }
         public static List<string[]> SumOfVotes(List<string[]> countries)
@@ -29,7 +29,7 @@ namespace Project
 
                 countries[i][1] = sum.ToString();
             }
-            
+
             return countries;
         }
         public static List<string[]> SortTheTop(List<string[]> countries, int column)
@@ -48,24 +48,41 @@ namespace Project
             }
             return countries;
         }
-        
-        public static List<string[]> ConvertToMarks(List<string[]> countries, int column)
+
+        public static List<string[]> ConvertToMarks(List<string[]> countries, int column, string correction)
         {
-            int mark = 12;
-            for (int i = 0; i < countries.Count; i++)
+            if (String.IsNullOrEmpty(correction))
             {
-                countries[i][column] = Convert.ToString(mark);
-                if (i <= 1)
+                for (int i = 0; i < countries.Count; i++)
                 {
-                    mark -= 2;
+                    countries[i][column] = Convert.ToString(mark);
+                    if (i <= 1)
+                    {
+                        mark -= 2;
+                    }
+                    else if (i < 10)
+                    {
+                        mark -= 1;
+                    }
                 }
-                else if (i < 10)
-                {
-                    mark -= 1;
-                }
-                Console.WriteLine(countries[i][0]+" "+countries[i][column]);
             }
-            Console.WriteLine();
+            else
+            {
+                var marks = correction.Split();
+                var mark = String.Empty;
+                for (int i = 0; i < countries.Count; i++)
+                {
+                    if (i < correction.Length)
+                    {
+                        mark = marks[i];
+                    }
+                    else
+                    {
+                        mark = 0;
+                    }
+                    countries[i][column] = Convert.ToString(mark);
+                }
+            }
             return countries;
         }
     }
